@@ -17,7 +17,7 @@ public class LinkedList {
 			this.data = data;
 		}
 	}
-	/*Uc-1
+	/*
 	 * Method Name:Elements
 	 * Logic for creating the simple LinkedList
 	 */
@@ -26,7 +26,7 @@ public class LinkedList {
 		System.out.print(newNode.data + " ");
 	}
 	/*
-	 * Uc-2
+	 * 
 	 * Method Name:addFirst
 	 * Logic for adding Data to the first like 
 	 * 70
@@ -37,6 +37,25 @@ public class LinkedList {
 		Node newNode = new Node(data);
 		newNode.ref = head;
 		head = newNode;
+	}
+	/*Method Name:addLast
+	 * Logic for adding data for Last like
+	 * 56
+	 * 56=>30
+     * 56=>30=>70
+	 */
+	public void addLast(Object data) {
+		Node newNode = new Node(data);
+		Node temp=head;
+		if(head==null)
+			head=newNode;
+		else {
+			
+		while(temp.ref!=null) {
+			temp=temp.ref;
+		}
+		temp.ref=newNode;
+		}
 	}
 	/*
 	 * Logic for displaying the added elements
@@ -62,11 +81,20 @@ public class LinkedList {
 	public static void main(String[] args) {
 		System.out.println("Welcome to the Linked List program");
 		LinkedList list = new LinkedList();
+		System.out.println("Add nodes at First");
 		list.addFirst(70);
 		list.display();
 		list.addFirst(30);
 		list.display();
 		list.addFirst(56);
+		list.display();
+		System.out.println("-----------------");
+		System.out.println("Add nodes at last");
+		list.addLast(56);
+		list.display();
+		list.addLast(30);
+		list.display();
+		list.addLast(70);
 		list.display();
 	}
 
