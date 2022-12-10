@@ -89,6 +89,14 @@ public class LinkedList {
 		left.ref = newNode;
 	}
 	/*
+	 * Method Name=deleteFirst
+	 * Logic for deleting the first element
+	 */
+	public void deleteFirst()
+	{
+		head = head.ref;
+	}
+	/*
 	 * Logic for displaying the added elements
 	 */
 	public void display() {
@@ -122,6 +130,14 @@ public class LinkedList {
 		int position = input.nextInt();
 		list.addAtPosition(30,position);
 		list.display();
+		System.out.println("Deleted data at first position");
+		list.deleteFirst();
+		list.display();
+		list.deleteFirst();
+		list.display();
+		list.deleteFirst();
+		list.display();
+		
 	}
 
 }
