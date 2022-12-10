@@ -1,5 +1,7 @@
 package com.java.linkedlist;
-
+/**
+ * imports the scanner class of the java.util package
+ */
 import java.util.Scanner;
 
 /**
@@ -161,21 +163,36 @@ public class LinkedList {
 		left.ref = newNode;
 	}
 	/*
+	 * Method Name:deleteAtPosition
+	 * logic deleting  the data at LinkedList Sequence and showing  the size of linkedList. 
+	 */
+	public void deleteAtPosition(Object data) {
+		int index = 0;
+		Node left = head;
+		Node right = left.ref;
+		while (right.data != data) {
+			left = left.ref;
+			right = right.ref;
+			index++;
+		}
+		left.ref = right.ref;
+
+	}
+	/*
 	 * Logic for displaying the added elements
 	 */
-	public void display() {
-		if (head == null)
-			System.out.println("List is empty");
-		else {
-			Node temp = head;
-			while (temp != null) {
-				if (temp.ref != null) {
-					System.out.print(temp.data + "=>");
-				} else
-					System.out.println(temp.data);
-				temp = temp.ref;
-			}
+	public Object display() {
+		int values = 0;
+		Node temp = head;
+		while (temp != null) {
+			values++;
+			if (temp.ref != null)
+				System.out.print(temp.data + " > ");
+			else
+				System.out.println(temp.data);
+			temp = temp.ref;
 		}
+		return "The size of list: " + values;
 	}
 	
 	
@@ -187,23 +204,14 @@ public class LinkedList {
 		LinkedList list = new LinkedList();
 		Scanner input = new Scanner(System.in);
 		list.addFirst(56);
-		list.display();
+		list.addLast(30);
+		list.addLast(40);
 		list.addLast(70);
 		list.display();
-		// System.out.println("Enter position after which you want to add node: ");
-		System.out.println("Enter position at which you want to add node: ");
-		int position = input.nextInt();
-		list.addAtPosition(30, position);
-		list.display();
-		System.out.println("Enter element to search in linked list: ");
-		int element = input.nextInt();
-		System.out.println(list.searchElement(element));
-		System.out.println("Enter element after which you want to add: ");
-		int data = input.nextInt();
-		System.out.println("Enter value to add: ");
-		int value = input.nextInt();
-		list.insertElement(data, value);
-		list.display();
+		
+		
+		list.deleteAtPosition(40);
+		System.out.println(list.display());
 	}
 
 }
