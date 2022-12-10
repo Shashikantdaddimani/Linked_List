@@ -1,4 +1,7 @@
 package com.java.linkedlist;
+
+import java.util.Scanner;
+
 /**
  *  Class to create LinkedList with different methods
  */
@@ -46,16 +49,44 @@ public class LinkedList {
 	 */
 	public void addLast(Object data) {
 		Node newNode = new Node(data);
-		Node temp=head;
-		if(head==null)
-			head=newNode;
+		Node temp = head;
+		if (head == null)
+			head = newNode;
 		else {
-			
-		while(temp.ref!=null) {
-			temp=temp.ref;
+
+			while (temp.ref != null) {
+				temp = temp.ref;
+			}
+			temp.ref = newNode;
 		}
-		temp.ref=newNode;
+	}
+	/*
+	 * Method Name:addAtposition
+	 * Logic for adding the data to inBetween position 
+	 */
+	public void addAtPosition(Object data, int position) {
+		int index = 0;
+		Node newNode = new Node(data);
+		Node left = head;
+		Node right = left.ref;
+
+		/*
+		 * position-1 is used because the value of index will be incremented and stops
+		 * before the position at which user wants to add the node
+		 */
+		while (index < (position - 1)) {
+
+			left = left.ref;
+			right = right.ref;
+			index++;
 		}
+		/*
+		 * if we do index < position is used because the value of index will be
+		 * incremented and will point to the index user has entered and the new element
+		 * will be added after the entered position
+		 */
+		newNode.ref = right;
+		left.ref = newNode;
 	}
 	/*
 	 * Logic for displaying the added elements
@@ -81,20 +112,15 @@ public class LinkedList {
 	public static void main(String[] args) {
 		System.out.println("Welcome to the Linked List program");
 		LinkedList list = new LinkedList();
-		System.out.println("Add nodes at First");
-		list.addFirst(70);
-		list.display();
-		list.addFirst(30);
-		list.display();
+		Scanner input = new Scanner(System.in);
 		list.addFirst(56);
 		list.display();
-		System.out.println("-----------------");
-		System.out.println("Add nodes at last");
-		list.addLast(56);
-		list.display();
-		list.addLast(30);
-		list.display();
 		list.addLast(70);
+		list.display();
+		
+		System.out.println("Enter position at which you want to add node: ");
+		int position = input.nextInt();
+		list.addAtPosition(30,position);
 		list.display();
 	}
 
