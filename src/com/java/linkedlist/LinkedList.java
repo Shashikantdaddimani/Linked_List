@@ -116,7 +116,7 @@ public class LinkedList {
 	}
 	/*
 	 * Method Name:searchElement
-	 * Logic for search a linkedList to find node with value 30
+	 * Logic for searching a linkedList to find the  node with value 30
 	 */
 	public Object searchElement(Object input)
 	{
@@ -137,6 +137,30 @@ public class LinkedList {
 		return null;
 	}
 	/*
+	 * Method Name:InsertElement
+	 * logic for insert the new data to after the LinkedList Sequence
+	 */
+	public void insertElement(Object input, Object value) {
+		Node newNode = new Node(value);
+		Node temp = head;
+
+		int index = 0;
+		while (temp.data != input) {
+			index++;
+			temp = temp.ref;
+		}
+		Node left = head;
+		Node right = left.ref;
+		int index1 = 0;
+		while (index1 < index) {
+			index1++;
+			left = left.ref;
+			right = right.ref;
+		}
+		newNode.ref = right;
+		left.ref = newNode;
+	}
+	/*
 	 * Logic for displaying the added elements
 	 */
 	public void display() {
@@ -154,6 +178,7 @@ public class LinkedList {
 		}
 	}
 	
+	
 	/*
 	 * Program execution starts from main method
 	 */
@@ -165,26 +190,20 @@ public class LinkedList {
 		list.display();
 		list.addLast(70);
 		list.display();
-		list.addFirst(126);
-		list.display();
-		list.addLast(99);
-		list.display();
-		list.addFirst(236);
-		list.display();
-		list.addLast(10);
-		list.display();
-		//System.out.println("Enter position after which you want to add node: ");
+		// System.out.println("Enter position after which you want to add node: ");
 		System.out.println("Enter position at which you want to add node: ");
 		int position = input.nextInt();
-		list.addAtPosition(30,position);
-		list.display();
-		list.deleteFirst();
-		list.display();
-		list.deleteLast();
+		list.addAtPosition(30, position);
 		list.display();
 		System.out.println("Enter element to search in linked list: ");
 		int element = input.nextInt();
 		System.out.println(list.searchElement(element));
+		System.out.println("Enter element after which you want to add: ");
+		int data = input.nextInt();
+		System.out.println("Enter value to add: ");
+		int value = input.nextInt();
+		list.insertElement(data, value);
+		list.display();
 	}
 
 }
