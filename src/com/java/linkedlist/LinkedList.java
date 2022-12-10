@@ -115,6 +115,28 @@ public class LinkedList {
 		}
 	}
 	/*
+	 * Method Name:searchElement
+	 * Logic for search a linkedList to find node with value 30
+	 */
+	public Object searchElement(Object input)
+	{
+		Node temp = head;
+		int index =0;
+		while(temp != null)
+		{
+			index++;
+			if(temp.data == input)
+			{
+				
+				String res=  temp.data+" found at index "+index;
+				
+				return res;
+			}	
+			temp = temp.ref;
+		}
+		return null;
+	}
+	/*
 	 * Logic for displaying the added elements
 	 */
 	public void display() {
@@ -143,16 +165,26 @@ public class LinkedList {
 		list.display();
 		list.addLast(70);
 		list.display();
+		list.addFirst(126);
+		list.display();
+		list.addLast(99);
+		list.display();
+		list.addFirst(236);
+		list.display();
+		list.addLast(10);
+		list.display();
 		//System.out.println("Enter position after which you want to add node: ");
 		System.out.println("Enter position at which you want to add node: ");
 		int position = input.nextInt();
 		list.addAtPosition(30,position);
 		list.display();
-		System.out.println("Deleted data at last position");
-		list.deleteLast();
+		list.deleteFirst();
 		list.display();
 		list.deleteLast();
 		list.display();
+		System.out.println("Enter element to search in linked list: ");
+		int element = input.nextInt();
+		System.out.println(list.searchElement(element));
 	}
 
 }
